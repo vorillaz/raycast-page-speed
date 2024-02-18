@@ -4,7 +4,7 @@ import { Color, Image, Icon } from "@raycast/api";
 export const getFavicon = (url: string) => {
   const u = "https://" + url;
   return getF(u, {
-    mask: Image.Mask.Circle,
+    mask: Image.Mask.RoundedRectangle,
     fallback: Icon.Globe,
   });
 };
