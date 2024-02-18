@@ -13,7 +13,7 @@ export default function Main(): ReactElement {
   const abortable = useRef<AbortController>();
 
   const rawSourceText = input.trim() || "";
-  const debouncedText = useDebouncedValue(rawSourceText, 500);
+  const debouncedText = useDebouncedValue(rawSourceText, 1000);
 
   const { isLoading, data, revalidate } = usePromise(
     async (url: string) => {

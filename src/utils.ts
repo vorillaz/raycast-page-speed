@@ -23,17 +23,11 @@ export const getColor = (score: number) => {
   return Color.Red;
 };
 
+const domainAndUrlRegEx = /^(((http|https):\/\/|)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?)$/;
+
 export const isURL = (url: string) => {
   if (!url) return false;
-  if (!url.startsWith("http://") && !url.startsWith("https://")) {
-    url = `https://${url}`;
-  }
-  try {
-    new URL(url);
-    return true;
-  } catch {
-    return false;
-  }
+  return domainAndUrlRegEx.test(url);
 };
 
 export const round = (num: number, places: number = 1) => {
