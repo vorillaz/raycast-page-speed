@@ -13,7 +13,7 @@ export default function Main(): ReactElement {
   const abortable = useRef<AbortController>();
 
   const rawSourceText = input.trim() || "";
-  const debouncedText = useDebouncedValue(rawSourceText, 500);
+  const debouncedText = useDebouncedValue(rawSourceText, 1000);
 
   const { isLoading, data, revalidate } = usePromise(
     async (url: string) => {
@@ -68,6 +68,7 @@ export default function Main(): ReactElement {
               <Action
                 icon={Icon.Trash}
                 title="Remove"
+                style={Action.Style.Destructive}
                 onAction={async () => {
                   await removeItem(item.url);
                   await revalidate();
@@ -78,7 +79,7 @@ export default function Main(): ReactElement {
           }
           accessories={[
             {
-              tag: { value: `Performarce`, color: getColor(item.performance) },
+              tag: { value: `Performance`, color: getColor(item.performance) },
               tooltip: `Performance: ${round(item.performance)}`,
               icon: getIcon(item.performance),
             },

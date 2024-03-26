@@ -27,3 +27,7 @@ export const removeItem = async (url: string) => {
   items = items.filter((i) => i.url !== url);
   await LocalStorage.setItem("items", JSON.stringify(items));
 };
+
+export const clearAllItems = async () => {
+  await LocalStorage.removeItem("items");
+};
