@@ -1,6 +1,6 @@
 import { Form, ActionPanel, Action, useNavigation, Toast, showToast } from "@raycast/api";
 import { useState } from "react";
-import { isURL, fetchPageSpeed } from "./utils";
+import { isDomain, fetchPageSpeed } from "./utils";
 import Main from "./pagespeed";
 
 export default function PagespeedForm() {
@@ -16,7 +16,7 @@ export default function PagespeedForm() {
   const checkDomain = (value: string | undefined) => {
     if (value && value.length == 0) {
       setDomainError("The domain should't be empty!");
-    } else if (!isURL(value)) {
+    } else if (!isDomain(value)) {
       setDomainError("The domain is invalid!");
     } else {
       setDomainError(undefined);
